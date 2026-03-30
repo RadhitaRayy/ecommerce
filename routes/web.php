@@ -17,8 +17,9 @@ Route::get('/', function () {
         ->latest()
         ->take(10)
         ->get();
+    $banners = \App\Models\Banner::where('is_active', true)->orderBy('sort_order')->get();
 
-    return view('home', compact('categories', 'products'));
+    return view('home', compact('categories', 'products', 'banners'));
 })->name('home');
 
 // Static Pages
